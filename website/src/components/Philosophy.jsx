@@ -56,7 +56,7 @@ export default function Philosophy() {
           ref={bgRef}
           src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=80&w=2000&auto=format&fit=crop"
           alt="Tennis Court Aerial"
-          className="w-full h-[120%] object-cover scale-110 origin-top"
+          className="w-full h-full object-cover scale-[1.3]"
         />
         <div className="absolute inset-0 bg-brand-charcoal/40 mix-blend-multiply" />
       </div>
