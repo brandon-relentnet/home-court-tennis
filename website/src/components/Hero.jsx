@@ -32,7 +32,7 @@ export default function Hero() {
       {/* Background Image — Tennis stadium with crowd */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=80&w=2000&auto=format&fit=crop"
+          src="https://images.pexels.com/photos/171568/pexels-photo-171568.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           alt="Tennis Stadium with Crowd"
           className="hero-bg w-full h-full object-cover transform-gpu opacity-80"
         />
