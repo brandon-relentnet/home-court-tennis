@@ -22,8 +22,8 @@ export default function Hero() {
     <section ref={container} className="relative h-[100dvh] w-full overflow-hidden bg-brand-charcoal text-white flex flex-col justify-end pb-24 px-6 md:px-16 selection:bg-brand-clay selection:text-white">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=2000&auto=format&fit=crop" 
+        <img
+          src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=2000&auto=format&fit=crop"
           alt="Tennis Court at Night"
           className="w-full h-full object-cover opacity-80"
         />
@@ -44,9 +44,9 @@ export default function Hero() {
           We don't just sell equipment. We elevate your game with professional stringing, elite apparel, and match-prep protocols.
         </p>
         <div className="hero-element mt-10">
-          <button className="magnetic-btn bg-brand-clay text-white px-8 py-4 rounded-full font-sans font-semibold text-lg tracking-wide hover:bg-opacity-90 transition-colors shadow-2xl">
+          <a href="#features" className="inline-block magnetic-btn bg-brand-clay text-white px-8 py-4 rounded-full font-sans font-semibold text-lg tracking-wide hover:bg-opacity-90 transition-colors shadow-2xl">
             <span>Gear Up</span>
-          </button>
+          </a>
         </div>
       </div>
     </section>

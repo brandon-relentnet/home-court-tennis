@@ -23,7 +23,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav 
+    <nav
       ref={navRef}
       className="fixed top-6 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-4xl rounded-full px-6 py-4 flex items-center justify-between transition-all duration-500 text-brand-cream
         [&.scrolled-nav]:bg-brand-cream/60 [&.scrolled-nav]:backdrop-blur-xl [&.scrolled-nav]:text-brand-moss [&.scrolled-nav]:border [&.scrolled-nav]:border-brand-moss/10 [&.scrolled-nav]:shadow-lg"
@@ -36,9 +36,9 @@ export default function Navbar() {
         <a href="#philosophy" className="link-lift">Philosophy</a>
         <a href="#protocol" className="link-lift">Protocol</a>
       </div>
-      <button className="magnetic-btn bg-brand-clay text-white px-6 py-2.5 rounded-full font-sans font-semibold text-sm tracking-wide shadow-md">
+      <a href="#features" className="magnetic-btn bg-brand-clay text-white px-6 py-2.5 rounded-full font-sans font-semibold text-sm tracking-wide shadow-md">
         <span>Shop Now</span>
-      </button>
+      </a>
     </nav>
   );
 }

@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#0d120f] border-t border-brand-moss/20 pt-20 pb-10 px-6 md:px-16 rounded-t-[4rem] text-brand-cream relative z-10 mt-[-4rem]">
+    <footer className="w-full bg-[#0d120f] border-t border-brand-moss/20 pt-20 pb-10 px-6 md:px-16 rounded-t-[4rem] text-brand-cream relative z-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 border-b border-brand-cream/10 pb-16">
         
         <div className="md:col-span-5 flex flex-col justify-between">

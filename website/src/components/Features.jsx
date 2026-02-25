@@ -53,7 +53,7 @@ function ShufflerCard() {
 function TypewriterCard() {
   const [text, setText] = useState('');
   const fullText = "Tension: 54lbs.\nString: Luxilon ALU Power.\nPattern: 16x19.\nStatus: Ready for play.";
-  
+
   useEffect(() => {
     let currentIndex = 0;
     const interval = setInterval(() => {
@@ -61,10 +61,12 @@ function TypewriterCard() {
         setText(fullText.slice(0, currentIndex));
         currentIndex++;
       } else {
-        currentIndex = 0; // loop
-        setText('');
+        setTimeout(() => {
+          currentIndex = 0;
+          setText('');
+        }, 2000);
       }
-    }, 100);
+    }, 50);
     return () => clearInterval(interval);
   }, [fullText]);
 
@@ -92,7 +94,7 @@ function SchedulerCard() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
-      
+
       tl.set(cursorRef.current, { x: 200, y: 150, opacity: 0 })
         .to(cursorRef.current, { opacity: 1, duration: 0.3 })
         .to(cursorRef.current, { x: 120, y: 40, duration: 1, ease: 'power2.inOut' }) // Move to Thursday
@@ -110,20 +112,19 @@ function SchedulerCard() {
   return (
     <div ref={containerRef} className="h-48 w-full bg-brand-cream border border-brand-moss/10 rounded-2xl p-5 shadow-sm relative overflow-hidden select-none">
       <div className="text-xs font-mono text-brand-moss/60 uppercase tracking-widest mb-4">Select Preparation Day</div>
-      
+
       <div className="grid grid-cols-7 gap-1 mb-6">
         {days.map((d, i) => (
-          <div 
-            key={i} 
-            className={`h-8 rounded flex items-center justify-center text-xs font-mono transition-colors duration-200 ${
-              activeDay === i ? 'bg-brand-clay text-white shadow-sm' : 'bg-brand-moss/5 text-brand-charcoal'
-            } ${pressed && activeDay === i ? 'scale-95' : ''}`}
+          <div
+            key={i}
+            className={`h-8 rounded flex items-center justify-center text-xs font-mono transition-colors duration-200 ${activeDay === i ? 'bg-brand-clay text-white shadow-sm' : 'bg-brand-moss/5 text-brand-charcoal'
+              } ${pressed && activeDay === i ? 'scale-95' : ''}`}
           >
             {d}
           </div>
         ))}
       </div>
-      
+
       <div className="flex justify-end">
         <button className={`bg-brand-moss text-white px-4 py-1.5 rounded-full text-xs font-sans tracking-wide transition-transform ${pressed && activeDay !== null ? 'bg-brand-moss/80 scale-95' : ''}`}>
           Save
@@ -162,7 +163,7 @@ export default function Features() {
       <h2 className="font-sans font-bold text-3xl text-brand-charcoal mb-16 max-w-md">
         Tools engineered to dictate the pace of the match.
       </h2>
-      
+
       <div className="grid md:grid-cols-3 gap-8">
         {/* Card 1 */}
         <div className="feature-card flex flex-col">
