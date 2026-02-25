@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: theme('colors.brand.cream');
+    color: theme('colors.brand.charcoal');
+  }
+}
+
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.05;
+}
+
+.magnetic-btn {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.magnetic-btn:hover {
+  transform: scale(1.03);
+}
+
+.magnetic-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.1);
+  transition: left 0.4s ease;
+  z-index: 1;
+}
+
+.magnetic-btn:hover::before {
+  left: 0;
+}
+
+.magnetic-btn > * {
+  position: relative;
+  z-index: 2;
+}
+
+.link-lift {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.link-lift:hover {
+  transform: translateY(-1px);
+}
