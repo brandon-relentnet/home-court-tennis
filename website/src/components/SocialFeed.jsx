@@ -59,48 +59,57 @@ export default function SocialFeed() {
                 scale: 0.95,
                 duration: 0.6,
                 stagger: 0.08,
-                ease: 'back.out(1.2)'
+                ease: 'back.out(1.2)',
+                clearProps: 'all' // Clean up inline styles so hover classes work
             });
         }, sectionRef);
         return () => ctx.revert();
     }, []);
+
+    // Watch for activeTab changes to safely trigger the Enter animation
+    useEffect(() => {
+        if (!isAnimating) return;
+
+        const ctx = gsap.context(() => {
+            gsap.fromTo('.feed-item',
+                { y: 40, opacity: 0, scale: 0.95 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.5,
+                    stagger: 0.05,
+                    ease: 'back.out(1.2)',
+                    clearProps: 'all', // Critical: allows group-hover styles to take over
+                    onComplete: () => setIsAnimating(false)
+                }
+            );
+        }, gridWrapRef);
+
+        return () => ctx.revert();
+    }, [activeTab]);
 
     // Handle Tab Switch Animation
     const handleTabChange = (newTab) => {
         if (newTab === activeTab || isAnimating) return;
         setIsAnimating(true);
 
-        const items = gsap.utils.toArray('.feed-item');
-
-        // Animate out
-        gsap.to(items, {
-            y: -20,
-            opacity: 0,
-            scale: 0.95,
-            duration: 0.3,
-            stagger: 0.05,
-            ease: 'power2.in',
-            onComplete: () => {
-                setActiveTab(newTab);
-
-                // Wait a tick for React to render new items, then animate in
-                setTimeout(() => {
-                    const newItems = gsap.utils.toArray('.feed-item');
-                    gsap.fromTo(newItems,
-                        { y: 40, opacity: 0, scale: 0.95 },
-                        {
-                            y: 0,
-                            opacity: 1,
-                            scale: 1,
-                            duration: 0.5,
-                            stagger: 0.05,
-                            ease: 'back.out(1.2)',
-                            onComplete: () => setIsAnimating(false)
-                        }
-                    );
-                }, 50);
-            }
-        });
+        const ctx = gsap.context(() => {
+            // Animate out
+            gsap.to('.feed-item', {
+                y: -20,
+                opacity: 0,
+                scale: 0.95,
+                duration: 0.25,
+                stagger: 0.04,
+                ease: 'power2.in',
+                onComplete: () => {
+                    // Update React state after exit animation finishes. 
+                    // This triggers the useEffect above to handle the enter animation.
+                    setActiveTab(newTab);
+                }
+            });
+        }, gridWrapRef);
     };
 
     const renderPosts = () => {
