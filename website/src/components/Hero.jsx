@@ -6,13 +6,22 @@ export default function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Background Image Scale In
+      gsap.from('.hero-bg', {
+        scale: 1.2,
+        duration: 4,
+        ease: 'power3.out',
+        delay: 2.5
+      });
+
+      // Elements Reveal
       gsap.from('.hero-element', {
         y: 40,
         opacity: 0,
         duration: 1.2,
         stagger: 0.15,
         ease: 'power3.out',
-        delay: 0.2
+        delay: 3.0 // sync with preloader completion
       });
     }, container);
     return () => ctx.revert();
@@ -21,11 +30,11 @@ export default function Hero() {
   return (
     <section ref={container} className="relative h-[100dvh] w-full overflow-hidden bg-brand-charcoal text-white flex flex-col justify-end pb-24 px-6 md:px-16 selection:bg-brand-clay selection:text-white">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=2000&auto=format&fit=crop"
           alt="Tennis Court at Night"
-          className="w-full h-full object-cover opacity-80"
+          className="hero-bg w-full h-full object-cover transform-gpu opacity-80"
         />
         {/* Heavy primary to black gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-brand-moss/90 via-brand-moss/40 to-black/20" />
