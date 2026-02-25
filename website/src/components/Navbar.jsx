@@ -32,12 +32,12 @@ export default function Navbar() {
         Home Court Tennis
       </div>
       <div className="hidden md:flex items-center gap-8 font-mono text-sm uppercase tracking-widest font-medium">
-        <a href="#features" className="link-lift">Gear</a>
-        <a href="#philosophy" className="link-lift">Philosophy</a>
-        <a href="#protocol" className="link-lift">Protocol</a>
+        <a href="#coverage" className="link-lift">Coverage</a>
+        <a href="#about" className="link-lift">About</a>
+        <a href="#process" className="link-lift">Process</a>
       </div>
-      <a href="#features" className="magnetic-btn bg-brand-clay text-white px-6 py-2.5 rounded-full font-sans font-semibold text-sm tracking-wide shadow-md">
-        <span>Shop Now</span>
+      <a href="#social" className="magnetic-btn bg-brand-clay text-white px-6 py-2.5 rounded-full font-sans font-semibold text-sm tracking-wide shadow-md">
+        <span>Follow Us</span>
       </a>
     </nav>
   );

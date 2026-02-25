@@ -42,17 +42,17 @@ export default function Philosophy() {
   }, []);
 
   return (
-    <section 
-      id="philosophy"
-      ref={sectionRef} 
+    <section
+      id="about"
+      ref={sectionRef}
       className="relative w-full py-48 overflow-hidden bg-brand-charcoal text-brand-cream flex items-center justify-center"
     >
       {/* Background Texture image */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-20">
-        <img 
+        <img
           ref={bgRef}
-          src="https://images.unsplash.com/photo-1542144612-1b3641ec3459?q=80&w=2000&auto=format&fit=crop" 
-          alt="Dark Moss Texture"
+          src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=80&w=2000&auto=format&fit=crop"
+          alt="Tennis Court Aerial"
           className="w-full h-[120%] object-cover scale-110 origin-top"
         />
         <div className="absolute inset-0 bg-brand-charcoal/40 mix-blend-multiply" />
@@ -60,11 +60,11 @@ export default function Philosophy() {
 
       <div ref={textRef} className="relative z-10 max-w-4xl px-6 text-center">
         <p className="manifesto-line font-sans text-xl md:text-2xl text-brand-cream/60 mb-6 font-light tracking-wide">
-          Most modern tennis shops focus on: <span className="text-white font-medium">moving inventory based on brand sponsorships.</span>
+          Most tennis media <span className="text-white font-medium">overlooked college entirely.</span>
         </p>
         <h2 className="manifesto-line font-drama italic text-5xl md:text-7xl leading-tight">
-          We focus on: <br />
-          <span className="text-brand-clay not-italic font-sans font-black tracking-tighter uppercase text-6xl md:text-8xl block mt-4 drop-shadow-lg">Elevating Your Game.</span>
+          We put the spotlight <br />
+          <span className="text-brand-clay not-italic font-sans font-black tracking-tighter uppercase text-6xl md:text-8xl block mt-4 drop-shadow-lg">Where It Belongs.</span>
         </h2>
       </div>
     </section>

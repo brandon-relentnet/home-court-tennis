@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Features from './components/Features';
 import Philosophy from './components/Philosophy';
 import Protocol from './components/Protocol';
+import SocialFeed from './components/SocialFeed';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
 import Cursor from './components/Cursor';
@@ -28,6 +29,7 @@ function App() {
         <Features />
         <Philosophy />
         <Protocol />
+        <SocialFeed />
       </main>
       <Footer />
     </div>
