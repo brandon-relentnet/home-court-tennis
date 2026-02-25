@@ -12,16 +12,19 @@ export default function Philosophy() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Parallax Background
-      gsap.to(bgRef.current, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true,
-        },
-        y: '20%',
-        ease: 'none'
-      });
+      gsap.fromTo(bgRef.current,
+        { y: '-10%' }, // Start slightly higher
+        {
+          y: '10%',    // End slightly lower
+          ease: 'none',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true,
+          }
+        }
+      );
 
       // Text Reveal
       const lines = gsap.utils.toArray('.manifesto-line');
