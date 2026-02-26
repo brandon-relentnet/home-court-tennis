@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { gsap } from 'gsap';
+import gsap from 'gsap';
 
 export default function Preloader({ onComplete }) {
     const [complete, setComplete] = useState(false);

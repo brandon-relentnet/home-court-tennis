@@ -66,7 +66,7 @@ export default function Protocol() {
       <div className="flex flex-col items-center">
         {steps.map((step, i) => (
           <div
-            key={i}
+            key={step.num}
             className="protocol-card sticky top-0 w-full h-[100vh] flex items-center justify-center p-6"
           >
             <div className="w-full max-w-4xl h-[70vh] bg-brand-charcoal rounded-[3rem] p-10 md:p-16 flex flex-col md:flex-row shadow-2xl overflow-hidden relative border border-brand-moss/20">

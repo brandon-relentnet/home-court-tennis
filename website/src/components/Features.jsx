@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Circle, Trophy, Tv } from 'lucide-react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function ShufflerCard() {
   const [items, setItems] = useState([
@@ -49,25 +52,30 @@ function ShufflerCard() {
   );
 }
 
+const TYPEWRITER_TEXT = "LIVE: #3 Florida vs #7 Georgia\nSet 2 — Tiebreak 6-5\nCourt 1: Match Point.\nStatus: Streaming Now.";
+
 function TypewriterCard() {
   const [text, setText] = useState('');
-  const fullText = "LIVE: #3 Florida vs #7 Georgia\nSet 2 — Tiebreak 6-5\nCourt 1: Match Point.\nStatus: Streaming Now.";
 
   useEffect(() => {
     let currentIndex = 0;
+    let resetTimer;
     const interval = setInterval(() => {
-      if (currentIndex <= fullText.length) {
-        setText(fullText.slice(0, currentIndex));
+      if (currentIndex <= TYPEWRITER_TEXT.length) {
+        setText(TYPEWRITER_TEXT.slice(0, currentIndex));
         currentIndex++;
       } else {
-        setTimeout(() => {
+        resetTimer = setTimeout(() => {
           currentIndex = 0;
           setText('');
         }, 2000);
       }
     }, 50);
-    return () => clearInterval(interval);
-  }, [fullText]);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(resetTimer);
+    };
+  }, []);
 
   return (
     <div className="h-48 w-full bg-brand-charcoal rounded-2xl p-6 shadow-md relative overflow-hidden flex flex-col justify-between">

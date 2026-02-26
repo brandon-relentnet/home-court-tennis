@@ -1,11 +1,15 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
+const HAS_FINE_POINTER = typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches;
+
 export default function Cursor() {
     const cursorRef = useRef(null);
     const dotRef = useRef(null);
 
     useEffect(() => {
+        if (!HAS_FINE_POINTER) return;
+
         const cursor = cursorRef.current;
         const dot = dotRef.current;
 
@@ -24,28 +28,39 @@ export default function Cursor() {
             });
         };
 
+        const hoverCleanups = [];
+
         const addHoverLinks = () => {
             const links = document.querySelectorAll('a, button, .link-lift, .magnetic-btn');
             links.forEach((el) => {
-                el.addEventListener('mouseenter', () => {
+                const onEnter = () => {
                     gsap.to(cursor, { scale: 1.5, borderColor: 'rgba(255, 255, 255, 0.5)', duration: 0.3 });
                     gsap.to(dot, { opacity: 0, duration: 0.1 });
-                });
-                el.addEventListener('mouseleave', () => {
+                };
+                const onLeave = () => {
                     gsap.to(cursor, { scale: 1, borderColor: 'rgba(204, 88, 51, 0.4)', duration: 0.3 });
                     gsap.to(dot, { opacity: 1, duration: 0.1 });
+                };
+                el.addEventListener('mouseenter', onEnter);
+                el.addEventListener('mouseleave', onLeave);
+                hoverCleanups.push(() => {
+                    el.removeEventListener('mouseenter', onEnter);
+                    el.removeEventListener('mouseleave', onLeave);
                 });
             });
         };
 
         window.addEventListener('mousemove', onMouseMove);
-        // Needs slight timeout to ensure components are rendered
-        setTimeout(addHoverLinks, 1500);
+        const hoverTimer = setTimeout(addHoverLinks, 1500);
 
         return () => {
             window.removeEventListener('mousemove', onMouseMove);
+            clearTimeout(hoverTimer);
+            hoverCleanups.forEach((fn) => fn());
         };
     }, []);
+
+    if (!HAS_FINE_POINTER) return null;
 
     return (
         <>

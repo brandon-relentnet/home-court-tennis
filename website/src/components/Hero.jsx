@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import gsap from 'gsap';
 
 export default function Hero() {
   const container = useRef(null);
@@ -34,6 +34,7 @@ export default function Hero() {
         <img
           src="https://images.pexels.com/photos/171568/pexels-photo-171568.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           alt="Tennis Stadium with Crowd"
+          onError={(e) => { e.currentTarget.style.display = 'none'; }}
           className="hero-bg w-full h-full object-cover transform-gpu opacity-80"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-moss/90 via-brand-moss/40 to-black/20" />
